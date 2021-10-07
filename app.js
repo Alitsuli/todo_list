@@ -4,7 +4,7 @@ const todoNappi = document.querySelector(".todo-nappi");
 const todoLista = document.querySelector(".todo-lista");
 
 
-// Eventti kuuntelija eli event listeners
+// lisää nappi toiminta
 todoNappi.addEventListener("click", function(event){
     //poista turhat eventit eli estää lomakkeen lähettämisen tässä tapauksessa
     event.preventDefault();
@@ -38,4 +38,18 @@ todoNappi.addEventListener("click", function(event){
     todoSyotto.value = "";
 });
 
-// funktiot eli function
+// poista nappi ja tehty nappi toiminta
+todoLista.addEventListener("click", function(e){
+    const kohde = e.target;
+    // poista todo
+    if(kohde.classList[0] === "poista-nap"){
+        const todo = kohde.parentElement;
+        todo.remove();
+    }
+
+    //tehty nappi
+    if(kohde.classList[0] === "tehty-nap"){
+        const todo = kohde.parentElement;
+        todo.classList.toggle("tehty");
+    }
+});
