@@ -1,2 +1,2 @@
 # todo_list
-nice to do list
+nice todo list
