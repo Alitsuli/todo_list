@@ -2,7 +2,7 @@
 const todoSyotto = document.querySelector(".todo-syotto");
 const todoNappi = document.querySelector(".todo-nappi");
 const todoLista = document.querySelector(".todo-lista");
-
+const filteriVaihtoehto = document.querySelector(".suodata-todo");
 
 // lisää nappi toiminta
 todoNappi.addEventListener("click", function(event){
@@ -44,7 +44,12 @@ todoLista.addEventListener("click", function(e){
     // poista todo
     if(kohde.classList[0] === "poista-nap"){
         const todo = kohde.parentElement;
-        todo.remove();
+        //animatio tehty
+        todo.classList.add("putoa");
+        // kun transistion loppuu poista sen kokonaan
+        todo.addEventListener("transitionend", function(){
+            todo.remove();
+        });
     }
 
     //tehty nappi
@@ -53,3 +58,30 @@ todoLista.addEventListener("click", function(e){
         todo.classList.toggle("tehty");
     }
 });
+
+// suodatimen toiminta
+filteriVaihtoehto.addEventListener("click", function(e){
+    const todos = todoLista.childNodes;
+    todos.forEach(function(todo){
+        switch(e.target.value){
+            case "kaikki":
+                todo.style.display = "flex";
+                break;
+            case "tehty":
+                if(todo.classList.contains("tehty")){
+                    todo.style.display = "flex";
+                }else{
+                    todo.style.display = "none";
+                }
+                break;
+            case "tekematta":
+                if(!todo.classList.contains("tehty")){
+                    todo.style.display = "flex";
+                }else{
+                    todo.style.display = "none";
+                }
+                break;
+        }
+    });
+});
+

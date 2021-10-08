@@ -19,16 +19,16 @@
         <button type="submit" class="todo-nappi">
             <i class="fas fa-plus-square"></i>
         </button>
+        <div class="valitse">
+            <select name="todos" class="suodata-todo">
+                <option value="kaikki">Kaikki</option>
+                <option value="tehty">Tehty</option>
+                <option value="tekematta">Tekemättä</option>
+            </select>
+        </div>
     </form>
     <div class="todo-nakyma">
-        <ul class="todo-lista">
-            <!-- .todo ja enter luo automaattisesti dib missä on class todo
-           <div class="todo">
-               <li></li>
-               <button></button>
-           </div>
-           -->
-        </ul>
+        <ul class="todo-lista"></ul>
     </div>
     <script src="./app.js"></script>
 </body>
